@@ -4,11 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e59811a1-baae-4bfa-8048-71c420ae63d8" name="Changes" comment="працює на 70%, створення контактів, пошук по id">
+    <list default="true" id="e59811a1-baae-4bfa-8048-71c420ae63d8" name="Changes" comment="готово на 100">
+      <change afterPath="$PROJECT_DIR$/src/auth/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/auth/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/auth/path_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/auth/repos.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/auth/routers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/auth/schema.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/auth/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contacts/repos.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/contacts/repos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contacts/routers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/contacts/routers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contacts/schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/contacts/schema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alembic/env.py" beforeDir="false" afterPath="$PROJECT_DIR$/alembic/env.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/general.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/general.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/contacts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/contacts/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,19 +59,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dell/PycharmProjects/contacts_fastapi&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Dell/PycharmProjects/contacts_fastapi",
+    "settings.editor.selected.configurable": "preferences.keymap"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;ChangesTree.GroupingKeys&quot;: []
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": []
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Dell\PycharmProjects\contacts_fastapi" />
@@ -101,7 +112,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731674800976</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="готово на 100">
+      <option name="closed" value="true" />
+      <created>1731875386755</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1731875386755</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -134,6 +153,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="працює на 70%, створення контактів, пошук по id" />
-    <option name="LAST_COMMIT_MESSAGE" value="працює на 70%, створення контактів, пошук по id" />
+    <MESSAGE value="готово на 100" />
+    <option name="LAST_COMMIT_MESSAGE" value="готово на 100" />
   </component>
 </project>
