@@ -1,4 +1,12 @@
+from enum import Enum
+
 from pydantic import BaseModel, EmailStr
+
+
+
+class RoleEnum(Enum):
+    ADMIN = "admin"
+    USER = "user"
 
 
 class UserBase(BaseModel):

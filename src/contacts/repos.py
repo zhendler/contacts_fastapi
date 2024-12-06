@@ -13,18 +13,18 @@ class ContactRepository:
     def __init__(self, session):
         self.session = session
 
-    async def get_all_contacts(self, skip: int = None, limit: int = 10) -> list[Contact:ContactResponse]:
-        query = select(Contact).offset(skip).limit(limit)
+    async def get_all_contacts(self, owner_id, skip: int = None, limit: int = 10) -> list[Contact:ContactResponse]:
+        query = select(Contact).where(Contact.owner_id == owner_id).offset(skip).limit(limit)
         result = await self.session.execute(query)
         return result.scalars().all()
 
-    async def get_contact(self, contact_id: int) -> Contact:
-        query = select(Contact).where(Contact.id == contact_id)
+    async def get_contact(self, contact_id: int, owner_id) -> Contact:
+        query = select(Contact).where(Contact.id == contact_id, Contact.owner_id == owner_id)
         result = await self.session.execute(query)
         return result.scalar_one_or_none()
 
-    async def create_contact(self, contact:ContactCreate)->Contact:
-        new_contact = Contact(**contact.model_dump())
+    async def create_contact(self, contact:ContactCreate, owner_id: int)->Contact:
+        new_contact = Contact(**contact.model_dump(), owner_id = owner_id)
         self.session.add(new_contact)
         await self.session.commit()
         await self.session.refresh(new_contact)
@@ -50,8 +50,8 @@ class ContactRepository:
         await self.session.delete(contact_to_delete)
         await self.session.commit()
 
-    async def get_search_result(self, search: ContactSearch) -> list[Contact]:
-        query = select(Contact)
+    async def get_search_result(self, search: ContactSearch, owner_id) -> list[Contact]:
+        query = select(Contact).where(Contact.owner_id == owner_id)
         filters = []
         if search.first_name:
             filters.append(Contact.first_name.contains(search.first_name))
@@ -66,11 +66,12 @@ class ContactRepository:
         result = await self.session.execute(query)
         return result.scalars().all()
 
-    async def get_upcoming_birthdays(self) -> list[Contact]:
+    async def get_upcoming_birthdays(self, owner_id) -> list[Contact]:
         today = date.today()
         week_later = today + timedelta(days=7)
 
         query = select(Contact).where(
+            Contact.owner_id == owner_id,
             or_(
                 extract('month', Contact.b_date) == today.month,
                 extract('month', Contact.b_date) == week_later.month
@@ -82,4 +83,5 @@ class ContactRepository:
         )
         result = await self.session.execute(query)
         return result.scalars().all()
+
 

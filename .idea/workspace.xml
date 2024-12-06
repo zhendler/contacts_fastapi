@@ -4,22 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e59811a1-baae-4bfa-8048-71c420ae63d8" name="Changes" comment="готово на 100">
-      <change afterPath="$PROJECT_DIR$/src/auth/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/auth/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/auth/path_utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/auth/repos.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/auth/routers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/auth/schema.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/auth/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="e59811a1-baae-4bfa-8048-71c420ae63d8" name="Changes" comment="add auth, token">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alembic/env.py" beforeDir="false" afterPath="$PROJECT_DIR$/alembic/env.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/general.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/general.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contacts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/contacts/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/repos.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/repos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/routers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/routers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/schema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/contacts/repos.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/contacts/repos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/contacts/routers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/contacts/routers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +59,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Dell/PycharmProjects/contacts_fastapi",
-    "settings.editor.selected.configurable": "preferences.keymap"
+    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings"
   },
   "keyToStringList": {
     "ChangesTree.GroupingKeys": []
@@ -83,7 +76,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-884f5ed5d46b-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.22855.92" />
+        <option value="bundled-python-sdk-6a3326d57233-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.24807.21" />
       </set>
     </attachedChunks>
   </component>
@@ -120,7 +113,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731875386755</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add auth, token">
+      <option name="closed" value="true" />
+      <created>1731939270348</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1731939270348</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -154,6 +155,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="працює на 70%, створення контактів, пошук по id" />
     <MESSAGE value="готово на 100" />
-    <option name="LAST_COMMIT_MESSAGE" value="готово на 100" />
+    <MESSAGE value="add auth, token" />
+    <option name="LAST_COMMIT_MESSAGE" value="add auth, token" />
   </component>
 </project>
