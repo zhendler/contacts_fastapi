@@ -10,7 +10,7 @@ from src.auth.utils import create_access_token, create_refresh_token, decode_acc
 
 router = APIRouter()
 
-@router.post("/register", response_model=UserResponse)
+@router.post("/register", status_code=status.HTTP_201_CREATED, response_model=UserResponse)
 async def register(
         user_create: UserCreate,
         db: AsyncSession = Depends(get_db),
@@ -24,7 +24,7 @@ async def register(
     return user
 
 
-@router.post("/token", response_model=Token)
+@router.post("/token", status_code=status.HTTP_201_CREATED, response_model=Token)
 async def login_for_access_token(
     form_data: OAuth2PasswordRequestForm = Depends(), db: AsyncSession = Depends(get_db)):
     user_repo = UserRepository(db)
@@ -40,7 +40,7 @@ async def login_for_access_token(
     return Token(access_token=access_token, refresh_token=refresh_token, token_type="bearer")
 
 
-@router.post("/refresh", response_model=Token)
+@router.post("/refresh", status_code=status.HTTP_201_CREATED, response_model=Token)
 async def refresh_tokens(refresh_token: str, db: AsyncSession = Depends(get_db)):
     token_data = decode_access_token(refresh_token)
     user_repo = UserRepository(db)

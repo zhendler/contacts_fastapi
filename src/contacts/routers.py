@@ -31,7 +31,7 @@ async def get_upcoming_birthdays(
     contacts = await contact_repo.get_upcoming_birthdays(user.id)
     return [ContactResponse.model_validate(contact, from_attributes=True) for contact in contacts]
 
-@router.post("/", response_model=ContactResponse, dependencies=[Depends(RoleChecker([RoleEnum.ADMIN, RoleEnum.USER]))])
+@router.post("/", response_model=ContactResponse, status_code=status.HTTP_201_CREATED, dependencies=[Depends(RoleChecker([RoleEnum.ADMIN, RoleEnum.USER]))])
 async def create_contact(contact: ContactCreate,
     user: User = Depends (get_current_user),
     db:AsyncSession = Depends(get_db)):
@@ -74,7 +74,7 @@ async def get_contact(contact_id: int,
 
 
 
-@router.post("/search/{search_term}", response_model= list[ContactResponse], dependencies=[Depends(RoleChecker([RoleEnum.ADMIN, RoleEnum.USER]))])
+@router.post("/search/{search_term}", response_model= list[ContactResponse], status_code=status.HTTP_201_CREATED, dependencies=[Depends(RoleChecker([RoleEnum.ADMIN, RoleEnum.USER]))])
 async def get_searched_contact( search:ContactSearch,
                             user: User = Depends (get_current_user),
                             db:AsyncSession = Depends(get_db)):
