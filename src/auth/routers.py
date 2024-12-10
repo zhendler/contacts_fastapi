@@ -1,15 +1,17 @@
-from fastapi import APIRouter, Depends, HTTPException, status, BackgroundTasks
+import cloudinary.uploader
+from fastapi import APIRouter, Depends, HTTPException, status, BackgroundTasks, UploadFile, File
 from fastapi.security import OAuth2PasswordRequestForm
 from jinja2 import Environment, FileSystemLoader
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from config.db import get_db
+from src.auth.models import User
 from src.auth.path_utils import verify_password
 from src.auth.mail_auth import send_verification
 from src.auth.repos import UserRepository
 from src.auth.schema import UserResponse, UserCreate, Token
 from src.auth.utils import create_access_token, create_refresh_token, decode_access_token, decode_verification_token, \
-    create_verification_token
+    create_verification_token, upload_avatar_to_cloudinary, get_current_user
 
 router = APIRouter()
 env = Environment(loader=FileSystemLoader("src/templates"))
@@ -83,3 +85,22 @@ async def refresh_tokens(refresh_token: str, db: AsyncSession = Depends(get_db))
     return Token(
         access_token=access_token, refresh_token=refresh_token, token_type="bearer"
     )
+
+
+@router.put("/user/avatar", response_model=UserResponse)
+async def update_avatar(
+        file: UploadFile = File(...),  # Завантаження файлу
+        current_user: User = Depends(get_current_user),  # Отримуємо поточного користувача
+        db: AsyncSession = Depends(get_db),
+):
+
+    avatar_url = await upload_avatar_to_cloudinary(file)
+
+    current_user.avatar_url = avatar_url
+    db.add(current_user)
+    await db.commit()
+    await db.refresh(current_user)
+
+    return current_user
+
+

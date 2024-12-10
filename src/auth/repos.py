@@ -36,6 +36,11 @@ class UserRepository:
         result = await self.session.execute(query)
         return result.scalar_one_or_none()
 
+    async def get_user_by_id(self, user_id):
+        query = select(User).where(User.id == user_id)
+        result = await self.session.execute(query)
+        return result.scalar_one_or_none()
+
     async def activate_user(self, user: User):
         user.is_active = True
         self.session.add(user)

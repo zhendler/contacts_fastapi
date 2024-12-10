@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e59811a1-baae-4bfa-8048-71c420ae63d8" name="Changes" comment="13 module 70 % done">
+    <list default="true" id="e59811a1-baae-4bfa-8048-71c420ae63d8" name="Changes" comment="13 module 100 % done">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/cloudinary_config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/general.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/general.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contacts/routers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/contacts/routers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/repos.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/repos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/routers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/routers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +74,7 @@
       <recent name="C:\Users\Dell\PycharmProjects\contacts_fastapi" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Dell\PycharmProjects\contacts_fastapi\config" />
       <recent name="C:\Users\Dell\PycharmProjects\contacts_fastapi\src\contacts" />
     </key>
   </component>
@@ -154,7 +158,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733816878536</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="13 module 100 % done">
+      <option name="closed" value="true" />
+      <created>1733820673285</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1733820673285</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -192,6 +204,7 @@
     <MESSAGE value="12 module hw done" />
     <MESSAGE value="12 module hw done v2" />
     <MESSAGE value="13 module 70 % done" />
-    <option name="LAST_COMMIT_MESSAGE" value="13 module 70 % done" />
+    <MESSAGE value="13 module 100 % done" />
+    <option name="LAST_COMMIT_MESSAGE" value="13 module 100 % done" />
   </component>
 </project>

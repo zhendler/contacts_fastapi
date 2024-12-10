@@ -19,5 +19,6 @@ class User(Base):
     hashed_password: Mapped[str] = mapped_column(String)
     is_active: Mapped[bool] = mapped_column(default=True)
     contacts: Mapped[list["Contact"]] = relationship("Contact", back_populates="owner")
+    avatar_url: Mapped[str] = mapped_column(String, nullable=True)
     role_id: Mapped[int] = mapped_column(Integer, ForeignKey("roles.id"), nullable=True)
     role: Mapped["Role"] = relationship("Role", lazy="selectin")

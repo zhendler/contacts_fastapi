@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta, timezone
 
-from fastapi import Depends, HTTPException, status
+import cloudinary, cloudinary.uploader
+from fastapi import Depends, HTTPException, status, UploadFile
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -98,3 +99,12 @@ class RoleChecker:
                 detail="You do not have permission to perform this action",
             )
         return user
+
+
+async def upload_avatar_to_cloudinary(file: UploadFile) -> str:
+
+    file_bytes = await file.read()
+
+    response = cloudinary.uploader.upload(file_bytes, folder="avatars/")
+
+    return response['secure_url']

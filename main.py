@@ -1,17 +1,19 @@
 from contextlib import asynccontextmanager
 
-
 from fastapi import FastAPI
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.redis import RedisBackend
 from fastapi_limiter import FastAPILimiter
 from redis import asyncio as aioredis
 
-
+from config.cloudinary_config import configure_cloudinary
 from config.general import settings
 from src.contacts.routers import router as contacts_router
 from src.auth.routers import router as auth_router
+
 from fastapi.middleware.cors import CORSMiddleware
+
+configure_cloudinary()
 
 
 @asynccontextmanager
@@ -38,6 +40,8 @@ app.add_middleware(
 
 app.include_router(contacts_router, prefix="/contacts", tags=["contacts"])
 app.include_router(auth_router, prefix="/auth", tags=["auth"])
+
+
 
 @app.get("/ping")
 async def ping():
