@@ -4,21 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e59811a1-baae-4bfa-8048-71c420ae63d8" name="Changes" comment="12 module hw done v2">
-      <change afterPath="$PROJECT_DIR$/config/cache.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/auth/mail_auth.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/templates/verification_email.html" afterDir="false" />
+    <list default="true" id="e59811a1-baae-4bfa-8048-71c420ae63d8" name="Changes" comment="13 module 70 % done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/general.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/general.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth/repos.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/repos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth/routers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/routers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contacts/repos.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/contacts/repos.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/contacts/routers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/contacts/routers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,20 +52,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Dell/PycharmProjects/contacts_fastapi",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dell/PycharmProjects/contacts_fastapi&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   },
-  "keyToStringList": {
-    "ChangesTree.GroupingKeys": []
+  &quot;keyToStringList&quot;: {
+    &quot;ChangesTree.GroupingKeys&quot;: []
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Dell\PycharmProjects\contacts_fastapi" />
@@ -154,7 +146,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733491426987</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="13 module 70 % done">
+      <option name="closed" value="true" />
+      <created>1733816878536</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1733816878536</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -191,6 +191,7 @@
     <MESSAGE value="add auth, token" />
     <MESSAGE value="12 module hw done" />
     <MESSAGE value="12 module hw done v2" />
-    <option name="LAST_COMMIT_MESSAGE" value="12 module hw done v2" />
+    <MESSAGE value="13 module 70 % done" />
+    <option name="LAST_COMMIT_MESSAGE" value="13 module 70 % done" />
   </component>
 </project>

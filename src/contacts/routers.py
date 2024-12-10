@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Query, Path, HTTPException, status
 from fastapi.params import Depends
+from fastapi_limiter.depends import RateLimiter
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from config.cache import invalidate_get_contacts_repo_cache
@@ -32,7 +33,10 @@ async def get_upcoming_birthdays(
     contacts = await contact_repo.get_upcoming_birthdays(user.id)
     return [ContactResponse.model_validate(contact, from_attributes=True) for contact in contacts]
 
-@router.post("/", response_model=ContactResponse, status_code=status.HTTP_201_CREATED, dependencies=[Depends(RoleChecker([RoleEnum.ADMIN, RoleEnum.USER]))])
+@router.post("/", response_model=ContactResponse,
+             status_code=status.HTTP_201_CREATED,
+             dependencies= [Depends(RateLimiter(times=5, seconds=60)),
+                            Depends(RoleChecker([RoleEnum.ADMIN, RoleEnum.USER]))])
 async def create_contact(contact: ContactCreate,
                         user: User = Depends (get_current_user),
                         db:AsyncSession = Depends(get_db)):
