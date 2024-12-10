@@ -1,8 +1,10 @@
 from datetime import date, timedelta
 
 from fastapi import HTTPException, status
+from fastapi_cache.decorator import cache
 from sqlalchemy import select, or_, extract
 
+from config.cache import custom_repo_key_builder
 from src.contacts.models import Contact
 
 from src.contacts.schema import ContactCreate, ContactUpdate, ContactResponse, ContactSearch
@@ -12,12 +14,13 @@ class ContactRepository:
 
     def __init__(self, session):
         self.session = session
-
+    @cache(expire=60, namespace="get_all_contacts", key_builder=custom_repo_key_builder)
     async def get_all_contacts(self, owner_id, skip: int = None, limit: int = 10) -> list[Contact:ContactResponse]:
         query = select(Contact).where(Contact.owner_id == owner_id).offset(skip).limit(limit)
         result = await self.session.execute(query)
         return result.scalars().all()
 
+    @cache(expire=60, namespace="get_contact", key_builder=custom_repo_key_builder)
     async def get_contact(self, contact_id: int, owner_id) -> Contact:
         query = select(Contact).where(Contact.id == contact_id, Contact.owner_id == owner_id)
         result = await self.session.execute(query)
@@ -50,6 +53,7 @@ class ContactRepository:
         await self.session.delete(contact_to_delete)
         await self.session.commit()
 
+    @cache(expire=60, namespace="search_contacts", key_builder=custom_repo_key_builder)
     async def get_search_result(self, search: ContactSearch, owner_id) -> list[Contact]:
         query = select(Contact).where(Contact.owner_id == owner_id)
         filters = []
@@ -66,6 +70,7 @@ class ContactRepository:
         result = await self.session.execute(query)
         return result.scalars().all()
 
+    @cache(expire=60, namespace="get_upcoming_birthdays", key_builder=custom_repo_key_builder)
     async def get_upcoming_birthdays(self, owner_id) -> list[Contact]:
         today = date.today()
         week_later = today + timedelta(days=7)

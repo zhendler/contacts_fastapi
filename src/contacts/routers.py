@@ -2,6 +2,7 @@ from fastapi import APIRouter, Query, Path, HTTPException, status
 from fastapi.params import Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from config.cache import invalidate_get_contacts_repo_cache
 from config.db import get_db
 from src.auth.models import User
 from src.auth.schema import RoleEnum
@@ -33,9 +34,11 @@ async def get_upcoming_birthdays(
 
 @router.post("/", response_model=ContactResponse, status_code=status.HTTP_201_CREATED, dependencies=[Depends(RoleChecker([RoleEnum.ADMIN, RoleEnum.USER]))])
 async def create_contact(contact: ContactCreate,
-    user: User = Depends (get_current_user),
-    db:AsyncSession = Depends(get_db)):
+                        user: User = Depends (get_current_user),
+                        db:AsyncSession = Depends(get_db)):
     contact_repo = ContactRepository(db)
+    await invalidate_get_contacts_repo_cache(user.id)
+
     return await contact_repo.create_contact(contact, user.id)
 
 
@@ -44,16 +47,26 @@ async def create_contact(contact: ContactCreate,
 @router.put("/{contact_id}", response_model=ContactResponse, dependencies=[Depends(RoleChecker([RoleEnum.ADMIN, RoleEnum.USER]))])
 async def update_contact(contact_id: int,
                          contact_data: ContactUpdate,
-                         # user: User = Depends (get_current_user),
+                         user: User = Depends (get_current_user),
                          db: AsyncSession = Depends(get_db)):
     contact_repo = ContactRepository(db)
+    contact = await contact_repo.get_contact(contact_id, user.id)
+    if not contact:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Contact not found")
+
+    await invalidate_get_contacts_repo_cache(user.id)
     updated_contact = await contact_repo.update_contact(contact_id, contact_data.dict(exclude_unset=True))
     return updated_contact
 
 @router.delete("/{contact_id}", status_code=204, dependencies=[Depends(RoleChecker([RoleEnum.ADMIN, RoleEnum.USER]))])
-async def delete_contact(contact_id: int, db: AsyncSession = Depends(get_db)):
+async def delete_contact(contact_id: int,
+                         user: User = Depends (get_current_user),
+                         db: AsyncSession = Depends(get_db)):
     contact_repo = ContactRepository(db)
+    await invalidate_get_contacts_repo_cache(user.id)
     result = await contact_repo.delete_contact(contact_id)
+
     if not result:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Contact not found")
 
@@ -62,8 +75,8 @@ async def delete_contact(contact_id: int, db: AsyncSession = Depends(get_db)):
 
 @router.get("/{contact_id}", response_model=ContactResponse, dependencies=[Depends(RoleChecker([RoleEnum.ADMIN, RoleEnum.USER]))])
 async def get_contact(contact_id: int,
-    user: User = Depends (get_current_user),
-    db:AsyncSession = Depends(get_db)):
+                        user: User = Depends (get_current_user),
+                        db:AsyncSession = Depends(get_db)):
     contact_repo = ContactRepository(db)
     contact = await contact_repo.get_contact(contact_id, user.id)
     if not contact:
