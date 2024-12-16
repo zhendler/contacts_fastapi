@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.redis import RedisBackend
 from fastapi_limiter import FastAPILimiter
-from redis import asyncio as aioredis
+import redis.asyncio as aioredis
 
 from config.cloudinary_config import configure_cloudinary
 from config.general import settings
@@ -20,9 +20,8 @@ configure_cloudinary()
 async def lifespan(app: FastAPI):
     # Startup event
     redis = aioredis.from_url(settings.redis_url, encoding="utf-8")
-    await FastAPILimiter.init(redis)
-    FastAPICache.init(RedisBackend(redis), prefix="fastapi-cache")
 
+    FastAPICache.init(RedisBackend(redis), prefix="fastapi-cache")
     yield
     # Shutdown event
     await redis.close()

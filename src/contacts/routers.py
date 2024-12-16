@@ -29,6 +29,21 @@ async def get_contacts(
 async def get_upcoming_birthdays(
         user: User = Depends (get_current_user),
         db: AsyncSession = Depends(get_db)):
+    """
+        Retrieve a list of contacts with upcoming birthdays for the current user.
+
+        This endpoint fetches contacts whose birthdays are approaching, based on the user's data.
+
+        Args:
+            user (User): The currently authenticated user, provided by `get_current_user`.
+            db (AsyncSession): The database session, provided by `get_db`.
+
+        Returns:
+            List[ContactResponse]: A list of contact details formatted as `ContactResponse`.
+
+        Access Control:
+            - Roles allowed: ADMIN, USER
+        """
     contact_repo = ContactRepository(db)
     contacts = await contact_repo.get_upcoming_birthdays(user.id)
     return [ContactResponse.model_validate(contact, from_attributes=True) for contact in contacts]
@@ -40,6 +55,24 @@ async def get_upcoming_birthdays(
 async def create_contact(contact: ContactCreate,
                         user: User = Depends (get_current_user),
                         db:AsyncSession = Depends(get_db)):
+    """
+        Create a new contact for the current user.
+
+        This endpoint allows the user to add a new contact to their personal list.
+
+        Args:
+            contact (ContactCreate): The data for the new contact, provided in the request body.
+            user (User): The currently authenticated user, provided by `get_current_user`.
+            db (AsyncSession): The database session, provided by `get_db`.
+
+        Returns:
+            ContactResponse: The newly created contact's details, formatted as `ContactResponse`.
+
+        Access Control:
+            - Roles allowed: ADMIN, USER
+        Rate Limiting:
+            - Maximum 5 requests per minute.
+        """
     contact_repo = ContactRepository(db)
     await invalidate_get_contacts_repo_cache(user.id)
 
